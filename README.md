@@ -1,33 +1,10 @@
-# Online Quiz
-
-## screenshots
-
-### Homepage
-
-![homepage snap]
-
-### Admin Dashboard
-
-![dashboard snap]
-
-### Exam Rules
-
-![invoice snap]
-
-### Exam
-
-![doctor snap]
-
-### Teacher
-
-![doctor snap]
----
+# Online Exam System
 
 ## Functions
 
 ### Admin
 
-- Create Admin account using command
+- Create Admin account using registerpage
 
 - After Login, can see Total Number Of Student, Teacher, Course, Questions are there in system on Dashboard.
 - Can View, Update, Delete, Approve Teacher.
@@ -39,7 +16,7 @@
 
 ### Teacher
 
-- Apply for job in System. Then Login (Approval required by system admin, Then only teacher can login).
+- Create Teacher account using registerpage. Then Login (Approval required by system admin, Then only teacher can login).
 - After Login, can see Total Number Of Student, Course, Questions are there in system on Dashboard.
 - Can Add, View, Delete Course/Exams.
 - Can Add Questions To Respective Courses With Options, Correct Answer, And Marks.
