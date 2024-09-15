@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam System - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="bg-blue-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">Online Exam System</h1>
+            <nav class="space-x-4">
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{% url 'about' %}" class="text-white hover:text-gray-300">About</a>
+                <a href="#" class="text-white hover:text-gray-300">Contact</a>
+                <a href="{% url 'login_view' %}" class="text-white hover:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+            <span class="text-2xl font-bold mb-2 text-center">
+                {% if msg %}
+                {{ msg | safe }}
+                {% endif %}
+            </span>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <p class="text-red-500 text-sm">{{ form.username.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                    <p class="text-red-500 text-sm">{{ form.password.errors }}</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Login</button>
+            </form>
+            <p class="mt-4 text-center text-sm">Don't have an account? <a href="{% url 'register' %}"
+                    class="text-blue-600 hover:underline">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-4">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Online Exam System. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

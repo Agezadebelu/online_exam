@@ -1,0 +1,26 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Manage Students</h1>
+
+    <!-- Students List -->
+    <ul class="divide-y divide-gray-200 mb-6">
+        {% for student in students %}
+        <li class="py-4 flex justify-between items-center">
+            <div>
+                <h3 class="text-lg font-semibold">{{ student.username }}</h3>
+                <p class="text-gray-600">{{ student.email }}</p>
+            </div>
+            <div>
+                <a href="{% url 'delete_student' student.id %}" class="text-red-600 hover:text-red-800">
+                    Delete
+                </a>
+            </div>
+        </li>
+        {% empty %}
+        <li class="py-4 text-gray-600">No students available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

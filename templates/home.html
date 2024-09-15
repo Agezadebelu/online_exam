@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="bg-blue-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">Online Exam System</h1>
+            <nav class="space-x-4">
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">About</a>
+                <a href="{% url 'contact' %}" class="text-white hover:text-gray-300">Contact</a>
+                <a href="{% url 'login_view' %}" class="text-white hover:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="bg-white py-10 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800 sm:text-4xl">Welcome to the Online Exam Platform</h2>
+                <p class="mt-4 text-gray-600">A simple, user-friendly online exam management system for Admins,
+                    Teachers, and Students.</p>
+                <div class="mt-8 space-x-4">
+                    <a href="{% url 'login_view' %}"
+                        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500">Get Started</a>
+                    <a href="{% url 'home' %}"
+                        class="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-10 sm:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl font-bold text-gray-800 text-center">Our Features</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+
+                <!-- Feature 1 -->
+                <div class="text-center bg-white p-6 rounded-lg shadow-lg">
+                    <span class="block text-blue-600 text-4xl mb-4">&#128100;</span>
+                    <h4 class="text-xl font-semibold text-gray-800">Admin Dashboard</h4>
+                    <p class="mt-2 text-gray-600">Manage users, courses, and exams seamlessly.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center bg-white p-6 rounded-lg shadow-lg">
+                    <span class="block text-blue-600 text-4xl mb-4">&#128105;&#8205;&#127979;</span>
+                    <h4 class="text-xl font-semibold text-gray-800">Teacher Dashboard</h4>
+                    <p class="mt-2 text-gray-600">Create and manage courses, quizzes, and exams.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center bg-white p-6 rounded-lg shadow-lg">
+                    <span class="block text-blue-600 text-4xl mb-4">&#128218;</span>
+                    <h4 class="text-xl font-semibold text-gray-800">Student Dashboard</h4>
+                    <p class="mt-2 text-gray-600">Take exams and track your results anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-4">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Online Exam System. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

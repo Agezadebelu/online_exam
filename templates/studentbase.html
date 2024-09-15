@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student - Online Exam System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-blue-600 p-4 flex justify-between items-center">
+        <h1 class="text-white text-2xl font-bold">Online Exam System</h1>
+        <nav>
+            <a href="{% url 'logout' %}" class="text-white hover:text-gray-300">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Sidebar and Content -->
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white h-screen">
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold">Student Panel</h2>
+            </div>
+            <nav class="mt-4 space-y-2">
+                <a href="{% url 'student_dashboard' %}" class="block py-2 px-4 hover:bg-gray-700">Dashboard</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">Take
+                    Exam</a>
+                <a href="#" class="block py-2 px-4 hover:bg-gray-700">View Results</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            {% block content %}
+            <!-- Student specific content will go here -->
+            {% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-4">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Online Exam System. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

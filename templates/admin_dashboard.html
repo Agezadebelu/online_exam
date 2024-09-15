@@ -1,0 +1,43 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Admin Dashboard</h1>
+
+    <!-- System Statistics Section -->
+    <div class="bg-blue-600 text-white p-4 rounded-lg shadow-lg mb-8">
+        <h3 class="text-lg font-semibold">System Statistics</h3>
+        <p class="mt-2"><strong>Total Students:</strong> {{ total_students }}</p>
+        <p><strong>Total Teachers:</strong> {{ total_teachers }}</p>
+        <p><strong>Total Courses:</strong> {{ total_courses }}</p>
+        <p><strong>Total Questions:</strong> {{ total_questions }}</p>
+    </div>
+
+    <!-- Manage System Section -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Manage System</h3>
+        <ul class="space-y-4">
+            <li>
+                <a href="{% url 'manage_teachers' %}" class="text-blue-600 hover:underline">
+                    Manage Teachers
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'manage_students' %}" class="text-blue-600 hover:underline">
+                    Manage Students
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'manage_courses' %}" class="text-blue-600 hover:underline">
+                    Manage Courses/Exams
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'manage_questions' %}" class="text-blue-600 hover:underline">
+                    Manage Questions
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

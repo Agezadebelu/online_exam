@@ -1,0 +1,37 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Manage Questions</h1>
+
+    <!-- Questions List -->
+    <ul class="divide-y divide-gray-200 mb-6">
+        {% for question in questions %}
+        <li class="py-4 flex justify-between items-center">
+            <div>
+                <h3 class="text-lg font-semibold">{{ question.text }}</h3>
+                <p class="text-gray-600">Course: {{ question.course.title }}</p>
+            </div>
+            <div>
+                <a href="{% url 'edit_question' question.id %}" class="text-blue-600 hover:text-blue-800 mr-4">
+                    Edit
+                </a>
+                <a href="{% url 'delete_question' question.id %}" class="text-red-600 hover:text-red-800">
+                    Delete
+                </a>
+            </div>
+        </li>
+        {% empty %}
+        <li class="py-4 text-gray-600">No questions available.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Add New Question Button -->
+    <div>
+        <a href="{% url 'add_question' %}"
+            class="bg-green-600 text-white font-semibold py-2 px-4 rounded hover:bg-green-700">
+            Add New Question
+        </a>
+    </div>
+</div>
+{% endblock %}

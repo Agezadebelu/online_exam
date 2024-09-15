@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam System - Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="bg-blue-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">Online Exam System</h1>
+            <nav class="space-x-4">
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{% url 'about' %}" class="text-white hover:text-gray-300">About</a>
+                <a href="#" class="text-white hover:text-gray-300">Contact</a>
+                <a href="{% url 'login_view' %}" class="text-white hover:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Signup Form -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+            <span class="text-2xl font-bold mb-2 text-center">
+                {% if msg %}
+                {{ msg | safe }}
+                {% endif %}
+            </span>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                    <p class="text-red-500 text-sm">{{ form.first_name.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                    <p class="text-red-500 text-sm">{{ form.last_name.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <p class="text-red-500 text-sm">{{ form.username.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <p class="text-red-500 text-sm">{{ form.email.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                    <p class="text-red-500 text-sm">{{ form.password1.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                    <p class="text-red-500 text-sm">{{ form.password2.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.is_admin.label_tag }}
+                    {{ form.is_admin }}
+                    {% if form.is_admin.errors %}
+                    <p class="text-red-500 text-sm">{{ form.is_admin.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.is_teacher.label_tag }}
+                    {{ form.is_teacher }}
+                    {% if form.is_teacher.errors %}
+                    <p class="text-red-500 text-sm">{{ form.is_teacher.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="mb-4">
+                    {{ form.is_student.label_tag }}
+                    {{ form.is_student }}
+                    {% if form.is_student.errors %}
+                    <p class="text-red-500 text-sm">{{ form.is_student.errors }}</p>
+                    {% endif %}
+                </div>
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Sign Up</button>
+            </form>
+            <p class="mt-4 text-center text-sm">Already have an account? <a href="{% url 'login_view' %}"
+                    class="text-blue-600 hover:underline">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-4">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Online Exam System. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

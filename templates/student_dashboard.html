@@ -1,0 +1,32 @@
+{% extends 'studentbase.html' %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Student Dashboard</h1>
+
+    <!-- Available Courses Section -->
+    <div class="bg-blue-600 text-white p-4 rounded-lg shadow-lg mb-8">
+        <h3 class="text-lg font-semibold">Available Courses</h3>
+        <p class="text-3xl mt-2">{{ total_courses }}</p>
+        <a href="{% url 'student_view_courses' %}" class="text-blue-200 hover:text-white mt-4 block underline">
+            View Courses
+        </a>
+    </div>
+
+    <!-- Exam Results Section -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Your Exam Results</h3>
+        <ul class="list-disc list-inside">
+            {% for result in exam_results %}
+            <li class="mb-2">
+                <strong>Exam:</strong> {{ result.exam.course.title }} |
+                <strong>Score:</strong> {{ result.score }} |
+                <strong>Date:</strong> {{ result.date }}
+            </li>
+            {% empty %}
+            <li>No exam results available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

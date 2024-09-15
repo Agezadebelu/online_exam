@@ -1,0 +1,25 @@
+{% extends 'studentbase.html' %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Available Courses</h1>
+
+    <!-- Courses List -->
+    <ul class="space-y-4">
+        {% for course in courses %}
+        <li class="bg-gray-100 p-4 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <h2 class="text-lg font-semibold text-gray-800">{{ course.title }}</h2>
+                <p class="text-gray-600">{{ course.description }}</p>
+            </div>
+            <a href="{% url 'student_take_exam' course.id %}"
+                class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+                Take Exam
+            </a>
+        </li>
+        {% empty %}
+        <li class="text-gray-600">No courses available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Online Exam System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="bg-blue-600 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-bold">Online Exam System</h1>
+            <nav class="space-x-4">
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-300">Home</a>
+                <a href="{% url 'about' %}" class="text-white hover:text-gray-300">About</a>
+                <a href="#" class="text-white hover:text-gray-300">Contact</a>
+                <a href="{% url 'login_view' %}" class="text-white hover:text-gray-300">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="bg-white py-10 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800 sm:text-4xl">Get in Touch</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                    Have any questions or need support? Feel free to reach out to us. Our team is ready to help you with
+                    anything you need regarding the Online Exam System.
+                </p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="mt-10 max-w-lg mx-auto">
+                <form action="#" method="POST" class="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Your Name</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full px-4 py-2 mt-1 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700">Your Email</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full px-4 py-2 mt-1 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700">Your Message</label>
+                        <textarea id="message" name="message" rows="5"
+                            class="w-full px-4 py-2 mt-1 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            required></textarea>
+                    </div>
+                    <div>
+                        <button type="submit"
+                            class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600">Send
+                            Message</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="mt-16 text-center">
+                <h3 class="text-xl font-bold text-gray-800">Contact Details</h3>
+                <p class="mt-4 text-gray-600">Email: lateradeb2019@gmail.com</p>
+                <p class="mt-2 text-gray-600">Phone: +251 923 104 464</p>
+                <p class="mt-2 text-gray-600">Address: Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 py-4">
+        <div class="container mx-auto text-center text-white">
+            <p>&copy; 2024 Online Exam System. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
