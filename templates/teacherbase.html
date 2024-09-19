@@ -11,7 +11,7 @@
 <body class="bg-gray-100">
 
     <!-- Header -->
-    <header class="bg-blue-600 p-4 flex justify-between items-center">
+    <header class="fixed top-0 left-0 w-full bg-blue-600 p-4 flex justify-between items-center z-10">
         <h1 class="text-white text-2xl font-bold">Online Exam System</h1>
         <nav>
             <a href="{% url 'logout' %}" class="text-white hover:text-gray-300">Logout</a>
@@ -21,7 +21,7 @@
     <!-- Sidebar and Content -->
     <div class="flex">
         <!-- Sidebar -->
-        <aside class="w-64 bg-gray-800 text-white h-screen">
+        <aside class="fixed top-16 left-0 h-full w-64 bg-gray-800 text-white">
             <div class="p-6">
                 <h2 class="text-2xl font-semibold">Teacher Panel</h2>
             </div>
@@ -31,11 +31,13 @@
                     Courses</a>
                 <a href="{% url 'teacher_manage_questions' %}" class="block py-2 px-4 hover:bg-gray-700">Manage
                     Questions</a>
+                <a href="{% url 'teacher_manage_results' %}" class="block py-2 px-4 hover:bg-gray-700">Manage
+                    Results</a>
             </nav>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-8">
+        <main class="flex-1 p-12 mt-12">
             {% block content %}
             <!-- Teacher specific content will go here -->
             {% endblock %}

@@ -48,6 +48,7 @@ urlpatterns = [
     path('admin/questions/add/', exam_views.add_question, name='add_question'),
     path('admin/questions/delete/<int:question_id>/', exam_views.delete_question, name='delete_question'),
     path('admin/questions/edit/<int:question_id>/', exam_views.edit_question, name='edit_question'),
+    path('admin/manage-results/', exam_views.admin_manage_results_view, name='admin_manage_results'),
 
     # Teacher dashboard and management URLs
     path('teacher/dashboard/', user_views.teacher_dashboard, name='teacher_dashboard'),
@@ -59,9 +60,11 @@ urlpatterns = [
     path('teacher/questions/', exam_views.teacher_manage_questions, name='teacher_manage_questions'),
     path('teacher/questions/add/', exam_views.teacher_add_question, name='teacher_add_question'),
     path('teacher/questions/delete/<int:question_id>/', exam_views.teacher_delete_question, name='teacher_delete_question'),
+    path('teacher/manage-results/', exam_views.teacher_manage_results_view, name='teacher_manage_results'),
 
     # Student dashboard and exam URLs
     path('student/dashboard/', user_views.student_dashboard, name='student_dashboard'),
     path('student/courses/', course_views.student_view_courses, name='student_view_courses'),
     path('student/exam/<int:course_id>/', exam_views.student_take_exam, name='student_take_exam'),
+    path('student/exam-results/', exam_views.student_exam_results_view, name='student_exam_results'),
 ]

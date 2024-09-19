@@ -39,6 +39,10 @@ def edit_question(request, question_id):
     
     return render(request, 'edit_question.html', {'form': form})
 
+def admin_manage_results_view(request):
+    results = ExamResult.objects.all()  # Get all results
+    return render(request, 'admin_manage_results.html', {'results': results})
+
 # Managing Questions for Teachers
 
 def teacher_manage_questions(request):
@@ -66,6 +70,11 @@ def teacher_delete_question(request, question_id):
     question.delete()
     return redirect('teacher_manage_questions')
 
+def teacher_manage_results_view(request):
+    teacher_courses = request.user.course_set.all()  # Get courses managed by this teacher
+    results = ExamResult.objects.filter(course__in=teacher_courses)
+    return render(request, 'teacher_manage_results.html', {'results': results})
+
 # Managing Questions for Students
 def student_take_exam(request, course_id):
     course = Course.objects.get(id=course_id)
@@ -73,13 +82,20 @@ def student_take_exam(request, course_id):
 
     if request.method == 'POST':
         score = 0
+        total_marks = 0
         for question in questions:
             selected_option = request.POST.get(str(question.id))
             if selected_option == question.correct_answer:
                 score += question.marks  # Assuming `marks` is a field in the `Question` model
+        
+            total_marks += question.marks
 
         # Save exam result
-        ExamResult.objects.create(student=request.user, exam=course, score=score)
-        return redirect('student_dashboard')
+        ExamResult.objects.create(student=request.user, course=course, score=score, total_marks=total_marks)
+        return redirect('student_exam_results')
 
     return render(request, 'student_take_exam.html', {'course': course, 'questions': questions})
+
+def student_exam_results_view(request):
+    results = ExamResult.objects.filter(student=request.user)
+    return render(request, 'student_exam_results.html', {'results': results})
