@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,7 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR=os.path.join(BASE_DIR,'static')
 MEDIA_ROOT=os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
+# Optional, helps on production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -28,8 +33,11 @@ SECRET_KEY = 'x5o+u5clg98a9o(8i-!r=0c@)8zw^#@w(sy-njlu=-xifq#2b0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# Enable SSL redirect (Render uses HTTPS)
+SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['your-service-name.onrender.com']
 
 AUTH_USER_MODEL = 'users.User'
 # Redirect to home page or login page after logout
@@ -60,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'online_exam.urls'
@@ -93,16 +102,23 @@ WSGI_APPLICATION = 'online_exam.wsgi.application'
 #    }
 #}
 
+# Default database config (development)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'exam_db',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Set to 'localhost' or '127.0.0.1' for local development
-        'PORT': '3306',  # Default port for MySQL
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_local_db_name',
+        'USER': 'your_local_user',
+        'PASSWORD': 'your_local_password',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# Use Render's PostgreSQL URL if available
+DATABASE_URL = os.getenv('postgresql://online_exam_django_render_user:FJ1lXQuBCrhIaMCfeSpyJPwgYA8axILt@dpg-d01ao3muk2gs73dhnsd0-a.oregon-postgres.render.com/online_exam_django_render')  # Render provides this in the environment
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
