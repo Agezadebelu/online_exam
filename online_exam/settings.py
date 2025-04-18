@@ -36,7 +36,7 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # Enable SSL redirect (Render uses HTTPS)
 SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = ['https://online-exam-2-ado2.onrender.com']  # ✅ This is a list
+ALLOWED_HOSTS = ['online-exam-2-ado2.onrender.com']  # ✅ This is a list
 
 AUTH_USER_MODEL = 'users.User'
 # Redirect to home page or login page after logout
