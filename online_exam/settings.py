@@ -29,15 +29,14 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x5o+u5clg98a9o(8i-!r=0c@)8zw^#@w(sy-njlu=-xifq#2b0'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # Enable SSL redirect (Render uses HTTPS)
 SECURE_SSL_REDIRECT = True
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['your-service-name.onrender.com']
+ALLOWED_HOSTS = ['your-site-name.onrender.com']  # ✅ This is a list
 
 AUTH_USER_MODEL = 'users.User'
 # Redirect to home page or login page after logout
@@ -95,13 +94,13 @@ WSGI_APPLICATION = 'online_exam.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+"""
 # Default database config (development)
 DATABASES = {
     'default': {
@@ -113,9 +112,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+"""
 # Use Render's PostgreSQL URL if available
-DATABASE_URL = os.getenv('postgresql://online_exam_django_render_user:FJ1lXQuBCrhIaMCfeSpyJPwgYA8axILt@dpg-d01ao3muk2gs73dhnsd0-a.oregon-postgres.render.com/online_exam_django_render')  # Render provides this in the environment
+DATABASE_URL = os.getenv('DATABASE_URL')  # Render provides this in the environment
 if DATABASE_URL:
     DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     
