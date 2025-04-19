@@ -7,8 +7,9 @@ from .models import User
 from courses.models import Course
 from exams.models import Question
 from exams.models import ExamResult
+from django.views.decorators.http import require_http_methods
 
-
+@require_http_methods(["GET"])  # or ["GET", "POST"] if needed
 def home(request):
     return render(request, 'home.html')
 
