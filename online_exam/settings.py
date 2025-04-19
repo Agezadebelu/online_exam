@@ -40,7 +40,7 @@ ALLOWED_HOSTS = ['online-exam-2-ado2.onrender.com']  # ✅ This is a list
 
 AUTH_USER_MODEL = 'users.User'
 # Redirect to home page or login page after logout
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = ['online-exam-2-ado2.onrender.com']
 
 
 # Application definition
