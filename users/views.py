@@ -7,9 +7,10 @@ from .models import User
 from courses.models import Course
 from exams.models import Question
 from exams.models import ExamResult
-from django.views.decorators.http import require_http_methods
+from django.contrib.auth import logout
 
-@require_http_methods(["GET"])  # or ["GET", "POST"] if needed
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -59,6 +60,10 @@ def login_view(request):
         else:
             msg = 'error validating form'
     return render(request, 'login.html', {'form': form, 'msg': msg})
+
+def logout_view(request):
+    logout(request)  # Log out the user
+    return redirect('home')  # Redirect to the home page 
 
 # Implement Admin Dashboard
 
